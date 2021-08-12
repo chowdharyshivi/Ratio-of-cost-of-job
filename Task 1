@@ -1,0 +1,13 @@
+\\Display ratio of cost of job family in percentage by India and international (refer simulation data).
+
+Create table ratio (CostOfJob int, Country varchar(255), JobType varchar(255));
+SELECT TOP (1000) [CostOfJob]
+,[Country]
+,[JobType]
+  FROM [SQLTASK].[dbo].[ratio]
+
+select JobType, Country,
+sum(CostOfJob) * 1.0 / sum(case when Country = 'India' then sum(CostOfJob) end) over (partition by JobType) as calculatedratio
+from ratio
+group by JobType, Country;
+
