@@ -1,0 +1,4 @@
+//Show headcounts of sub band and percentage of headcount (without join, subquery and inner query).
+
+Select job, count(*) from emp group by job;
+Select round(count(*)/(select count * from emp))*100,2) as headcounts,job from emp group by job;
