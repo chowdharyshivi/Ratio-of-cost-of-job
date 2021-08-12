@@ -1,0 +1,11 @@
+//Find ratio of cost and revenue of a BU month on month.
+
+select month, sale, 
+if(@last_entry = 0, 0, round(((sale - @last_entry) / @last_entry) * 100,2)) "growth rate",
+       @last_entry := sale                  
+from
+      (select @last_entry := 0) x,
+      (select month, sum(sale) sale
+       from   (select month(order_date) as month,sum(sale) as sale 
+               from sales group by month(order_date)) monthly_sales
+       group by month) y;
