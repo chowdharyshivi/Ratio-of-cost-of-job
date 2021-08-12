@@ -1,0 +1,13 @@
+//Find top 5 employees according to salary (without order by).
+
+DECLARE @counter AS int=1,@salary int,
+		@Name NCHAR(50)
+while(@counter<6)
+begin 
+
+SELECT @Name=Name, @salary=Salary 
+FROM EMPLOYEE e1 WHERE @counter-1 = (SELECT COUNT(DISTINCT Salary) FROM                                                            EMPLOYEE e2 WHERE e2.Salary > e1.Salary)
+print @Name+CONVERT(VARCHAR,@salary)
+set @counter=@counter+1
+
+end
