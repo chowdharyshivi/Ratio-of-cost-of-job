@@ -1,0 +1,8 @@
+//Swap value of two columns in a table without using third variable or a table.
+
+UPDATE [Task5]
+SET [First Name] = [Last Name],
+   [Last Name] = [First Name]
+GO
+
+Select * FROM Task5
