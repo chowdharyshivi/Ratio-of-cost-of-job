@@ -1,0 +1,20 @@
+
+//Create a user, create a login for that user provide permissions of DB_owner to the user
+USE master
+GO
+
+CREATE LOGIN SQLT6 WITH PASSWORD='abcd1234@'
+GO
+
+CREATE USER SQLT6 FOR LOGIN SQLT6
+GO
+
+USE KML
+GO
+
+CREATE USER SQLT6 FOR LOGIN SQLT6
+GO
+
+ALTER ROLE [db_owner] ADD MEMBER SQLT6
+GO
+
