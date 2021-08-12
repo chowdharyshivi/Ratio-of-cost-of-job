@@ -1,0 +1,3 @@
+//Copy new data of one table to another (you do not have indicator for new data and old data).
+INSERT INTO TASK_9 (SELECT * FROM EMP);
+INSERT INTO TASK_9 (SELECT * FROM EMP WHERE JOB=’MANAGER’);
